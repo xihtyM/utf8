@@ -4,8 +4,6 @@
 
 #if defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__)
 #include <windows.h>
-#include <fcntl.h>
-#include <io.h>
 
 // Common UTF-8 locales
 constexpr inline const char *const locales[] = {

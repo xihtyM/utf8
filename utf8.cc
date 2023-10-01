@@ -3,10 +3,6 @@
 char *set_utf8(void)
 {
 #if defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__)
-    _setmode(_fileno(stdout), _O_U8TEXT);
-    _setmode(_fileno(stdin), _O_U8TEXT);
-    _setmode(_fileno(stderr), _O_U8TEXT);
-
     if (!SetConsoleOutputCP(65001))
     {
         return nullptr;
