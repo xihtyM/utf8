@@ -1,12 +1,24 @@
 #pragma once
 
+#ifdef __cplusplus
 #include <locale>
+#else
+#include <locale.h>
+#include <stdio.h>
+#include <stdint.h>
+#endif
 
 #if defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__)
 #include <windows.h>
 
+#ifdef __cplusplus
+constexpr inline
+#else
+static
+#endif
+
 // Common UTF-8 locales
-constexpr inline const char *const locales[] = {
+const char *const locales[] = {
     ".utf-8",
     ".utf8",
     ".UTF-8",
@@ -44,8 +56,12 @@ constexpr inline const char *const locales[] = {
 
     // If it reaches here, there
     // is probably no utf-8 support
-    nullptr,
+    NULL,
 };
 #endif
 
-char *set_utf8(void);
+#ifdef __cplusplus
+extern "C"
+#endif
+char *set_utf8(
+    void);
